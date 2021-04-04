@@ -28,6 +28,8 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
+#define DUTY_CYCLE 100
+#define PERIOD 500
 
 /* USER CODE END PTD */
 
@@ -112,6 +114,10 @@ int main(void)
     MX_USB_HOST_Process();
 
     /* USER CODE BEGIN 3 */
+    HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_SET);
+    HAL_Delay(DUTY_CYCLE);
+    HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
+    HAL_Delay(PERIOD - DUTY_CYCLE);
   }
   /* USER CODE END 3 */
 }
